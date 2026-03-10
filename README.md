@@ -30,3 +30,9 @@ This is the official implementation of the paper:
 1. Train the model: Run the `train_*.ipynb` files to train the model from scratch (configure the dataset path and hyperparameters first).
 2. Compare model performance: Execute the code files with `compare` in the name to compare the performance metrics of different trained models.
 3. Calculate IoU and Information Entropy: Run the file named `Calculation of Shape Consistency Score plus Information Entropy` to obtain the IoU (Intersection over Union) and Information Entropy scores of the model's shallow, middle, and deep layers.
+
+# HiCE: Hierarchical Cognitive Evolution for Lightweight CNN OOD Generalization
+[![DOI](https://zenodo.org/badge/1177524614.svg)](https://doi.org/10.5281/zenodo.18933628)
+
+This is the official implementation of the paper:
+"Feature Attention Bias in Lightweight CNNs: Unveiling Mechanisms for Out-of-Distribution Generalization" (submitted to The Visual Computer).
