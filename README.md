@@ -25,3 +25,8 @@ This is the official implementation of the paper:
 ### Runtime Environment Instructions
 - Jupyter Notebook files are recommended to run in a Python 3.8+ environment. After installing dependencies, execute the command `jupyter notebook` to start the service and open the files for execution.
 - All experimental results are reproducible, and specific dependencies are listed in `requirements.txt` below.
+
+## Quick Reproduction Steps
+1. Train the model: Run the `train_*.ipynb` files to train the model from scratch (configure the dataset path and hyperparameters first).
+2. Compare model performance: Execute the code files with `compare` in the name to compare the performance metrics of different trained models.
+3. Calculate IoU and Information Entropy: Run the file named `Calculation of Shape Consistency Score plus Information Entropy` to obtain the IoU (Intersection over Union) and Information Entropy scores of the model's shallow, middle, and deep layers.
