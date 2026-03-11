@@ -9,6 +9,14 @@ This is the official implementation of the paper:
 - torchvision 0.20.1+cu121
 - numpy, matplotlib, scikit-learn, opencv-python
 
+## Dataset
+The dataset used in this paper is publicly archived with a permanent DOI:
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18946407.svg)](https://doi.org/10.5281/zenodo.18946407)
+
+- Access link: https://doi.org/10.5281/zenodo.18946407
+- Permanent DOI: 10.5281/zenodo.18946407
+- License: Creative Commons Attribution 4.0 International
+
 ## Code File Description
 ### Core Training Code
 - Jupyter Notebook files starting with `train` (e.g., `train_cnn.ipynb`, `train_hice_model.ipynb`):
@@ -36,3 +44,4 @@ This is the official implementation of the paper:
 
 This is the official implementation of the paper:
 "Feature Attention Bias in Lightweight CNNs: Unveiling Mechanisms for Out-of-Distribution Generalization" (submitted to The Visual Computer).
+
