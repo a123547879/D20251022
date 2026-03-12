@@ -10,7 +10,6 @@ from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms
 from PIL import Image
 from matplotlib import pyplot as plt
-from 小型CNN提取特征 import HeatmapEncoder
 import math
 
 class ImageFolderWithMask(datasets.ImageFolder):
@@ -215,91 +214,91 @@ def calculate_iou(heatmap, mask, threshold=0.5):
 #                 print(name)
 
 
-def compute_cov_term(heatmaps, masks, encoder= None, eps= 1e-8):
-    """
-    计算 $\Sigma_r + \Sigma_g - 2(\Sigma_r \Sigma_g)^{\frac{1}{2}}$
+# def compute_cov_term(heatmaps, masks, encoder= None, eps= 1e-8):
+#     """
+#     计算 $\Sigma_r + \Sigma_g - 2(\Sigma_r \Sigma_g)^{\frac{1}{2}}$
     
-    参数:
-        real_features: 真实样本的特征矩阵，形状为 [N, D]（N为样本数，D为特征维度）
-        gen_features: 生成样本的特征矩阵，形状为 [M, D]（M为样本数，D为特征维度）
+#     参数:
+#         real_features: 真实样本的特征矩阵，形状为 [N, D]（N为样本数，D为特征维度）
+#         gen_features: 生成样本的特征矩阵，形状为 [M, D]（M为样本数，D为特征维度）
     
-    返回:
-        协方差项的矩阵，形状为 [D, D]
-    """
-    if isinstance(heatmaps, np.ndarray):
-        # 若输入是numpy，转为tensor并移至mask所在设备
-        heatmaps = torch.tensor(heatmaps, dtype=torch.float32, device=masks.device)
-    else:
-        # 确保heatmap与mask设备一致
-        heatmaps = heatmaps.to(masks.device).float()
+#     返回:
+#         协方差项的矩阵，形状为 [D, D]
+#     """
+#     if isinstance(heatmaps, np.ndarray):
+#         # 若输入是numpy，转为tensor并移至mask所在设备
+#         heatmaps = torch.tensor(heatmaps, dtype=torch.float32, device=masks.device)
+#     else:
+#         # 确保heatmap与mask设备一致
+#         heatmaps = heatmaps.to(masks.device).float()
     
-    if masks.ndim == 4:
-        masks = masks.squeeze(1)
+#     if masks.ndim == 4:
+#         masks = masks.squeeze(1)
 
-    assert heatmaps.shape == masks.shape, "形状不匹配"
-    batch_size = heatmaps.shape[0]
+#     assert heatmaps.shape == masks.shape, "形状不匹配"
+#     batch_size = heatmaps.shape[0]
     
-    # -------------------------- 新增：降维步骤 --------------------------
-    if encoder is not None:
-        # 方案1：用传统形状特征提取（无需训练，encoder设为"traditional"）
-        # if encoder == "traditional":
-        #     heatmaps_lowdim = extract_shape_features(heatmaps)  # [B, D']，D'=20/32
-        #     masks_lowdim = extract_shape_features(masks)
-        # 方案2：用小型CNN提取（encoder为定义好的HeatmapEncoder实例）
-        # else:
-        with torch.no_grad():  # 无训练时禁用梯度
-            heatmaps_lowdim = encoder(heatmaps)  # [B, 128]
-            masks_lowdim = encoder(masks)
-        # 校验维度：D' < batch_size（保证协方差矩阵非奇异）
-        # assert heatmaps_lowdim.shape[1] < batch_size, f"低维特征维度{D'}需小于批次大小{batch_size}"
-        features_r = heatmaps_lowdim
-        features_g = masks_lowdim
-    else:
-        # 兼容原有逻辑（无降维）
-        features_r = heatmaps.reshape(batch_size, -1)
-        features_g = masks.reshape(batch_size, -1)
+#     # -------------------------- 新增：降维步骤 --------------------------
+#     if encoder is not None:
+#         # 方案1：用传统形状特征提取（无需训练，encoder设为"traditional"）
+#         # if encoder == "traditional":
+#         #     heatmaps_lowdim = extract_shape_features(heatmaps)  # [B, D']，D'=20/32
+#         #     masks_lowdim = extract_shape_features(masks)
+#         # 方案2：用小型CNN提取（encoder为定义好的HeatmapEncoder实例）
+#         # else:
+#         with torch.no_grad():  # 无训练时禁用梯度
+#             heatmaps_lowdim = encoder(heatmaps)  # [B, 128]
+#             masks_lowdim = encoder(masks)
+#         # 校验维度：D' < batch_size（保证协方差矩阵非奇异）
+#         # assert heatmaps_lowdim.shape[1] < batch_size, f"低维特征维度{D'}需小于批次大小{batch_size}"
+#         features_r = heatmaps_lowdim
+#         features_g = masks_lowdim
+#     else:
+#         # 兼容原有逻辑（无降维）
+#         features_r = heatmaps.reshape(batch_size, -1)
+#         features_g = masks.reshape(batch_size, -1)
     
-    # -------------------------- 原有协方差计算逻辑（完全不变） --------------------------
-    # 中心化
-    features_r_centered = features_r - features_r.mean(dim=0, keepdim=True)
-    features_g_centered = features_g - features_g.mean(dim=0, keepdim=True)
+#     # -------------------------- 原有协方差计算逻辑（完全不变） --------------------------
+#     # 中心化
+#     features_r_centered = features_r - features_r.mean(dim=0, keepdim=True)
+#     features_g_centered = features_g - features_g.mean(dim=0, keepdim=True)
     
-    # 协方差矩阵（无偏估计）
-    sigma_r = (features_r_centered.T @ features_r_centered) / (batch_size - 1 + eps)
-    sigma_g = (features_g_centered.T @ features_g_centered) / (batch_size - 1 + eps)
+#     # 协方差矩阵（无偏估计）
+#     sigma_r = (features_r_centered.T @ features_r_centered) / (batch_size - 1 + eps)
+#     sigma_g = (features_g_centered.T @ features_g_centered) / (batch_size - 1 + eps)
     
     
-    # 添加正则化避免奇异矩阵
-    # torch.eye() 是 PyTorch 中用于创建单位矩阵（Identity Matrix） 的核心函数，
-    # 生成一个「对角线上元素为 1，其余元素为 0」的二维张量（默认是方阵，也可指定非方阵）。
-    # 单位矩阵在线性代数、模型初始化（如权重初始化）、掩码生成等场景中常用。
-    sigma_r = sigma_r + eps * torch.eye(sigma_r.size(0), device=sigma_r.device)
-    sigma_g = sigma_g + eps * torch.eye(sigma_g.size(0), device=sigma_g.device)
+#     # 添加正则化避免奇异矩阵
+#     # torch.eye() 是 PyTorch 中用于创建单位矩阵（Identity Matrix） 的核心函数，
+#     # 生成一个「对角线上元素为 1，其余元素为 0」的二维张量（默认是方阵，也可指定非方阵）。
+#     # 单位矩阵在线性代数、模型初始化（如权重初始化）、掩码生成等场景中常用。
+#     sigma_r = sigma_r + eps * torch.eye(sigma_r.size(0), device=sigma_r.device)
+#     sigma_g = sigma_g + eps * torch.eye(sigma_g.size(0), device=sigma_g.device)
     
-    # 计算矩阵平方根 (Σ_r Σ_g)^{1/2}
-    sigma_product = sigma_r @ sigma_g
+#     # 计算矩阵平方根 (Σ_r Σ_g)^{1/2}
+#     sigma_product = sigma_r @ sigma_g
     
-    # 使用更稳定的矩阵平方根计算
-    try:
-        # 方法1: SVD分解
-        U, S, Vh = torch.linalg.svd(sigma_product)
-        S_sqrt = torch.sqrt(torch.clamp(S, min=eps))
-        sqrt_sigma_product = U @ torch.diag(S_sqrt) @ Vh
-    except:
-        # 方法2: 特征值分解（备选）
-        L, V = torch.linalg.eig(sigma_product)
-        L_sqrt = torch.sqrt(torch.clamp(L.real, min=eps))
-        # V.T.conj().real 完全解析（PyTorch）
-        # 这个链式操作是 PyTorch 中对矩阵 / 张量的转置 + 共轭 + 实部提取组合操作，
-        # 核心用于处理复数张量（或兼容实数张量），
-        # 在 SVD 分解、矩阵共轭转置（Hermitian 转置）、复数矩阵重构等场景中高频出现（结合你之前的 SVD 相关问题，V 大概率是 torch.svd() 返回的右奇异向量）。
-        sqrt_sigma_product = V @ torch.diag(L_sqrt) @ V.T.conj().real
+#     # 使用更稳定的矩阵平方根计算
+#     try:
+#         # 方法1: SVD分解
+#         U, S, Vh = torch.linalg.svd(sigma_product)
+#         S_sqrt = torch.sqrt(torch.clamp(S, min=eps))
+#         sqrt_sigma_product = U @ torch.diag(S_sqrt) @ Vh
+#     except:
+#         # 方法2: 特征值分解（备选）
+#         L, V = torch.linalg.eig(sigma_product)
+#         L_sqrt = torch.sqrt(torch.clamp(L.real, min=eps))
+#         # V.T.conj().real 完全解析（PyTorch）
+#         # 这个链式操作是 PyTorch 中对矩阵 / 张量的转置 + 共轭 + 实部提取组合操作，
+#         # 核心用于处理复数张量（或兼容实数张量），
+#         # 在 SVD 分解、矩阵共轭转置（Hermitian 转置）、复数矩阵重构等场景中高频出现（结合你之前的 SVD 相关问题，V 大概率是 torch.svd() 返回的右奇异向量）。
+#         sqrt_sigma_product = V @ torch.diag(L_sqrt) @ V.T.conj().real
     
-    # 计算协方差项
-    cov_term = sigma_r + sigma_g - 2 * sqrt_sigma_product
+#     # 计算协方差项
+#     cov_term = sigma_r + sigma_g - 2 * sqrt_sigma_product
     
-    # 返回Frobenius范数作为标量指标
-    return torch.norm(cov_term).item()
+#     # 返回Frobenius范数作为标量指标
+#     return torch.norm(cov_term).item()
 
 def calculate_heatmap_entropy(heatmaps, eps=1e-8):
     """
@@ -565,3 +564,4 @@ if __name__ == "__main__":
         seed= 42,
         device=DEVICE
     )
+
