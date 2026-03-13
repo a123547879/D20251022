@@ -9,6 +9,10 @@ This is the official implementation of the paper:
 - torchvision 0.20.1+cu121
 - numpy, matplotlib, scikit-learn, opencv-python
 
+Install all dependencies via:
+```bash
+pip install -r requirements.txt
+
 ## Dataset
 The dataset used in this paper is publicly archived with a permanent DOI:
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18985822.svg)](https://doi.org/10.5281/zenodo.18985822)
@@ -42,15 +46,17 @@ The code in this repository is licensed under the MIT License.
 - All experimental results are reproducible, and specific dependencies are listed in `requirements.txt` below.
 
 ## Quick Reproduction Steps
-1. Train the model: Run the `train_*.ipynb` files to train the model from scratch (configure the dataset path and hyperparameters first).
-2. Compare model performance: Execute the code files with `compare` in the name to compare the performance metrics of different trained models.
-3. Calculate IoU and Information Entropy: Run the file named `Calculation of Shape Consistency Score plus Information Entropy` to obtain the IoU (Intersection over Union) and Information Entropy scores of the model's shallow, middle, and deep layers.
+1.Download the dataset: Click the DOI link above to download the dataset archive, extract it, and configure the dataset path in the code.
+2.Train the model: Run the train_*.ipynb files to train the model from scratch (configure the dataset path and hyperparameters first).
+3.Compare model performance: Execute the code files with compare in the name to compare the performance metrics of different trained models.
+4.Calculate IoU and Information Entropy: Run calculate_shape_consistency_entropy.py to obtain the IoU (Intersection over Union) and Information Entropy scores of the model's shallow, middle, and deep layers.
 
 # HiCE: Hierarchical Cognitive Evolution for Lightweight CNN OOD Generalization
 [![DOI](https://zenodo.org/badge/1177524614.svg)](https://doi.org/10.5281/zenodo.18933628)
 
 This is the official implementation of the paper:
 "Feature Attention Bias in Lightweight CNNs: Unveiling Mechanisms for Out-of-Distribution Generalization" (submitted to The Visual Computer).
+
 
 
 
