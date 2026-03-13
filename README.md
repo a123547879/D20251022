@@ -33,10 +33,9 @@ The code in this repository is licensed under the MIT License.
 - The file named `Calculation_of_Shape_Consistency_Score_plus_Information_Entropy`:
   This is the execution file for Grad-CAM-based Shape Consistency IoU and Information Entropy calculation, including the computation of Shape Consistency Score, quantification of IoU (Intersection over Union) metrics, calculation of Information Entropy values, and the linkage analysis logic between Grad-CAM heatmaps and Shape Consistency results.
 
-### get_models: 
-- Batch-computes the Intersection over Union (IoU) and information entropy for the shallow, middle, and deep layers of each model.
-### play_layers: 
-- Extracts all hierarchical layers from the target models for subsequent mechanism analysis.
+### Core Function Descriptions
+- get_models: Batch-computes the Intersection over Union (IoU) and information entropy for the shallow, middle, and deep layers of each model.
+- play_layers: Extracts all hierarchical layers from the target models for subsequent mechanism analysis.
 
 ### Runtime Environment Instructions
 - Jupyter Notebook files are recommended to run in a Python 3.11+ environment. After installing dependencies, execute the command `jupyter notebook` to start the service and open the files for execution.
@@ -52,6 +51,7 @@ The code in this repository is licensed under the MIT License.
 
 This is the official implementation of the paper:
 "Feature Attention Bias in Lightweight CNNs: Unveiling Mechanisms for Out-of-Distribution Generalization" (submitted to The Visual Computer).
+
 
 
 
