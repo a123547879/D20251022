@@ -13,8 +13,8 @@ This is the official implementation of the paper:
 The dataset used in this paper is publicly archived with a permanent DOI:
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18985822.svg)](https://doi.org/10.5281/zenodo.18985822)
 
-- Access link: https://doi.org/10.5281/zenodo.18946407
-- Permanent DOI: 10.5281/zenodo.18946407
+- Access link: https://doi.org/10.5281/zenodo.18985822
+- Permanent DOI: 10.5281/zenodo.18985822
 - License: Creative Commons Attribution 4.0 International
 
 ## Code File Description
@@ -49,5 +49,6 @@ The dataset used in this paper is publicly archived with a permanent DOI:
 
 This is the official implementation of the paper:
 "Feature Attention Bias in Lightweight CNNs: Unveiling Mechanisms for Out-of-Distribution Generalization" (submitted to The Visual Computer).
+
 
 
