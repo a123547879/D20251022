@@ -27,7 +27,7 @@ The dataset used in this paper is publicly archived with a permanent DOI:
   These are the experimental codes for model performance comparison, covering the comparative calculation of accuracy metrics under different models/hyperparameters, as well as codes for saving experimental result data and visualization.
 
 ### Shape Consistency Score + Information Entropy Calculation Code
-- The file named `Calculation of Shape Consistency Score plus Information Entropy`:
+- The file named `Calculation_of_Shape_Consistency_Score_plus_Information_Entropy`:
   This is the execution file for Grad-CAM-based Shape Consistency IoU and Information Entropy calculation, including the computation of Shape Consistency Score, quantification of IoU (Intersection over Union) metrics, calculation of Information Entropy values, and the linkage analysis logic between Grad-CAM heatmaps and Shape Consistency results.
 
 ### get_models: 
@@ -49,6 +49,7 @@ The dataset used in this paper is publicly archived with a permanent DOI:
 
 This is the official implementation of the paper:
 "Feature Attention Bias in Lightweight CNNs: Unveiling Mechanisms for Out-of-Distribution Generalization" (submitted to The Visual Computer).
+
 
 
 
