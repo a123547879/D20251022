@@ -10,7 +10,6 @@ from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms
 from PIL import Image
 from matplotlib import pyplot as plt
-from 小型CNN提取特征 import HeatmapEncoder
 import math
 
 plt.rcParams['font.sans-serif'] = ['SimHei']
@@ -398,3 +397,4 @@ if __name__ == "__main__":
 
         for i, TARGET_LAYER_NAME in enumerate(layers):
             main(DATA_ROOT, MODEL_TYPE, MODEL_PATH, 1, TARGET_LAYER_NAME, i, DEVICE)
+
