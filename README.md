@@ -11,7 +11,7 @@ This is the official implementation of the paper:
 
 ## Dataset
 The dataset used in this paper is publicly archived with a permanent DOI:
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18946407.svg)](https://doi.org/10.5281/zenodo.18946407)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18985822.svg)](https://doi.org/10.5281/zenodo.18985822)
 
 - Access link: https://doi.org/10.5281/zenodo.18946407
 - Permanent DOI: 10.5281/zenodo.18946407
@@ -45,7 +45,7 @@ The dataset used in this paper is publicly archived with a permanent DOI:
 3. Calculate IoU and Information Entropy: Run the file named `Calculation of Shape Consistency Score plus Information Entropy` to obtain the IoU (Intersection over Union) and Information Entropy scores of the model's shallow, middle, and deep layers.
 
 # HiCE: Hierarchical Cognitive Evolution for Lightweight CNN OOD Generalization
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18985822.svg)](https://doi.org/10.5281/zenodo.18985822)
+[![DOI](https://zenodo.org/badge/1177524614.svg)](https://doi.org/10.5281/zenodo.18933628)
 
 This is the official implementation of the paper:
 "Feature Attention Bias in Lightweight CNNs: Unveiling Mechanisms for Out-of-Distribution Generalization" (submitted to The Visual Computer).
