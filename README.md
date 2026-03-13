@@ -30,8 +30,13 @@ The dataset used in this paper is publicly archived with a permanent DOI:
 - The file named `Calculation of Shape Consistency Score plus Information Entropy`:
   This is the execution file for Grad-CAM-based Shape Consistency IoU and Information Entropy calculation, including the computation of Shape Consistency Score, quantification of IoU (Intersection over Union) metrics, calculation of Information Entropy values, and the linkage analysis logic between Grad-CAM heatmaps and Shape Consistency results.
 
+### get_models: 
+- Batch-computes the Intersection over Union (IoU) and information entropy for the shallow, middle, and deep layers of each model.
+### play_layers: 
+- Extracts all hierarchical layers from the target models for subsequent mechanism analysis.
+
 ### Runtime Environment Instructions
-- Jupyter Notebook files are recommended to run in a Python 3.8+ environment. After installing dependencies, execute the command `jupyter notebook` to start the service and open the files for execution.
+- Jupyter Notebook files are recommended to run in a Python 3.11+ environment. After installing dependencies, execute the command `jupyter notebook` to start the service and open the files for execution.
 - All experimental results are reproducible, and specific dependencies are listed in `requirements.txt` below.
 
 ## Quick Reproduction Steps
@@ -40,8 +45,9 @@ The dataset used in this paper is publicly archived with a permanent DOI:
 3. Calculate IoU and Information Entropy: Run the file named `Calculation of Shape Consistency Score plus Information Entropy` to obtain the IoU (Intersection over Union) and Information Entropy scores of the model's shallow, middle, and deep layers.
 
 # HiCE: Hierarchical Cognitive Evolution for Lightweight CNN OOD Generalization
-[![DOI](https://zenodo.org/badge/1177524614.svg)](https://doi.org/10.5281/zenodo.18933628)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18985822.svg)](https://doi.org/10.5281/zenodo.18985822)
 
 This is the official implementation of the paper:
 "Feature Attention Bias in Lightweight CNNs: Unveiling Mechanisms for Out-of-Distribution Generalization" (submitted to The Visual Computer).
+
 
