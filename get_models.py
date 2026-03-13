@@ -1,5 +1,5 @@
 import os
-from 形状一致性分数加信息熵计算 import *
+from Calculation_of_Shape_Consistency_Score_plus_Information_Entropy import *
 
 root = 'save_models'
 
@@ -152,4 +152,5 @@ for MODEL_TYPE, model_files in zip(MODEL_TYPES, [mobV3_model_files, ghost_model_
     for layer_name in target_layer_names:
         print(f'model_type: {MODEL_TYPE}')
         TARGET_LAYER_NAME = layer_name
+
         get_result_data(model_files, MODEL_TYPE, TARGET_LAYER_NAME)
