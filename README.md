@@ -17,6 +17,9 @@ The dataset used in this paper is publicly archived with a permanent DOI:
 - Permanent DOI: 10.5281/zenodo.18985822
 - License: Creative Commons Attribution 4.0 International
 
+## Code License
+The code in this repository is licensed under the MIT License.
+
 ## Code File Description
 ### Core Training Code
 - Jupyter Notebook files starting with `train` (e.g., `train_cnn.ipynb`, `train_hice_model.ipynb`):
@@ -49,6 +52,7 @@ The dataset used in this paper is publicly archived with a permanent DOI:
 
 This is the official implementation of the paper:
 "Feature Attention Bias in Lightweight CNNs: Unveiling Mechanisms for Out-of-Distribution Generalization" (submitted to The Visual Computer).
+
 
 
 
