@@ -9,9 +9,9 @@ This is the official implementation of the paper:
 - torchvision 0.20.1+cu121
 - numpy, matplotlib, scikit-learn, opencv-python
 
-Install all dependencies via:
-```bash
-pip install -r requirements.txt
+  Install all dependencies via:
+  ```bash
+  pip install -r requirements.txt
 
 ## Dataset
 The dataset used in this paper is publicly archived with a permanent DOI:
