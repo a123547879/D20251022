@@ -1,7 +1,7 @@
 # HiCE: Hierarchical Cognitive Evolution for Lightweight CNN OOD Generalization
 
 This is the official implementation of the paper:
-"Feature Attention Bias in Lightweight CNNs: Unveiling Mechanisms for Out-of-Distribution Generalization" (initially submitted to The Visual Computer, transferred to Neural Processing Letters for peer review on [2026-04-02]).
+"Feature Attention Bias in Lightweight CNNs: Unveiling Mechanisms for Out-of-Distribution Generalization" (initially submitted to The Visual Computer, transferred to International Journal of Machine Learning and Cybernetics for peer review).
 
 ## 📋 Dependencies & Requirements
 - Python 3.11+
@@ -55,7 +55,7 @@ The code in this repository is licensed under the MIT License.
 [![DOI](https://zenodo.org/badge/1177524614.svg)](https://doi.org/10.5281/zenodo.18933628)
 
 This is the official implementation of the paper:
-"Feature Attention Bias in Lightweight CNNs: Unveiling Mechanisms for Out-of-Distribution Generalization" (initially submitted to The Visual Computer, transferred to Neural Processing Letters for peer review on [2026-04-02]).
+"Feature Attention Bias in Lightweight CNNs: Unveiling Mechanisms for Out-of-Distribution Generalization" (initially submitted to The Visual Computer, transferred to International Journal of Machine Learning and Cybernetics for peer review).
 
 
 
