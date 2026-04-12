@@ -15,7 +15,7 @@ This is the official implementation of the paper:
 
 ## Dataset
 The dataset used in this paper is publicly archived with a permanent DOI:
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18985822.svg)](https://doi.org/10.5281/zenodo.18985822)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19528241.svg)](https://doi.org/10.5281/zenodo.19528241)
 
 - Access link: https://doi.org/10.5281/zenodo.18985822
 - Permanent DOI: 10.5281/zenodo.18985822
