@@ -1,0 +1,93 @@
+{
+  "stage": "supplemental_digit_shift_experiments",
+  "source_domain": "MNIST",
+  "checkpoint_source": "D20251116/models/complete",
+  "targets": [
+    {
+      "name": "Sudoku-Digits",
+      "type": "imagefolder",
+      "path": "D20251022/dataFolder/test_data_black",
+      "status": "completed",
+      "samples": 2970,
+      "result_file": "revision/experiments/results/full/checkpoint_eval_sudoku_digits.csv"
+    },
+    {
+      "name": "Generated-Num",
+      "type": "imagefolder",
+      "path": "D20251022/dataFolder/num",
+      "status": "completed",
+      "samples": 36101,
+      "result_file": "revision/experiments/results/full/checkpoint_eval_generated_num.csv",
+      "note": "Local non-standard target; use as supplemental evidence, not as a benchmark replacement."
+    },
+    {
+      "name": "USPS",
+      "type": "torchvision",
+      "path": "revision/experiments/torchvision_data/USPS",
+      "split": "test",
+      "status": "completed",
+      "samples": 2007,
+      "result_file": "revision/experiments/results/full/checkpoint_eval_usps_test.csv",
+      "download_note": "Downloaded through torchvision with --insecure-download because the local Python certificate chain rejected the upstream certificate."
+    },
+    {
+      "name": "SVHN-Train",
+      "type": "torchvision",
+      "path": "D20251004/dataFolder/svhn",
+      "split": "train",
+      "status": "completed",
+      "samples": 73257,
+      "result_file": "revision/experiments/results/full/checkpoint_eval_svhn_train.csv",
+      "note": "Loaded by torchvision.datasets.SVHN after installing scipy. This uses the locally available train_32x32.mat file."
+    },
+    {
+      "name": "SVHN-Test",
+      "type": "torchvision",
+      "path": "revision/experiments/torchvision_data/SVHN",
+      "split": "test",
+      "status": "blocked",
+      "blocker": "torchvision download was attempted with --insecure-download but timed out after 30 minutes, leaving incomplete test_32x32.mat files that were not used."
+    }
+  ],
+  "seeds": [42, 2025, 1024, 512, 100],
+  "default_training": {
+    "epochs": 10,
+    "batch_size": 128,
+    "optimizer": "Adam",
+    "learning_rate": 0.001,
+    "input_size": [224, 224],
+    "in_channels": 1
+  },
+  "models_for_minimum_revision": [
+    "mobilenetv2",
+    "resnet18",
+    "mobilenetv3",
+    "shufflenetv2",
+    "ghostnet"
+  ],
+  "completed_protocol": {
+    "mode": "checkpoint_evaluation",
+    "evaluator": "revision/experiments/evaluate_checkpoints.py",
+    "summary_script": "revision/experiments/summarize_checkpoint_results.py",
+    "batch_size": {
+      "usps-test": 256,
+      "svhn-train": 512,
+      "imagefolder_targets": 256
+    },
+    "in_channels": 1,
+    "input_size": [224, 224],
+    "normalization": {
+      "mean": [0.1307],
+      "std": [0.3081]
+    },
+    "device": "cuda"
+  },
+  "outputs": {
+    "smoke_tests": "revision/experiments/results/smoke",
+    "full_results": "revision/experiments/results/full",
+    "torchvision_data": "revision/experiments/torchvision_data",
+    "summary_csv": "revision/experiments/results/checkpoint_eval_summary.csv",
+    "summary_markdown": "revision/experiments/results/checkpoint_eval_summary.md",
+    "checkpoints": "revision/experiments/checkpoints"
+  }
+}
