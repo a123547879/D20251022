@@ -1,7 +1,8 @@
 # HiCE: Hierarchical Cognitive Evolution for Lightweight CNN OOD Generalization
 
 This is the official implementation of the paper:
-"An Empirical Study on Feature Attention Bias in Lightweight CNNs: A Diagnostic Framework for Edge Vision under Domain Shift".
+"HiCE: Diagnosing Feature Attention Bias in Lightweight CNNs
+under Domain Shift".
 
 ## 📋 Dependencies & Requirements
 - Python 3.11+
